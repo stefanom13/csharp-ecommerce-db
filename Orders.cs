@@ -9,22 +9,35 @@ using System.Threading.Tasks;
 
 namespace csharp_ecommerce_db
 {
-    internal class Orders
+    [Table("Orders")]
+    //[Index(nameof(Email), IsUnique = true)]
+    public class Orders
     {
-        [Table("Orders")]
-        //[Index(nameof(Email), IsUnique = true)]
-        public class Order
-        {
-            [Key]
-            public int OrderId { get; set; }
+        
+        
+        [Key]
+        [Column("Id")]
+        public int OrderId { get; set; }
 
-            [Required]
-            public string Date { get; set; }
+        [Required]
+        [Column("Date")]
+        public DateTime Date { get; set; }
 
-            public string Amount { get; set; }
+        [Column("Amount")]
+        public string Amount { get; set; }
 
-            [Column("Avaible")]
-            public bool Status { get; set; }
-        }
+        [Column("Avaible")]
+        public bool Status { get; set; }
+
+        //[ForeignKey]
+        [Column("Customer_Id")]
+        public int CustomerId { get; set; }
+
+        //relazione 1 a M
+        public Customers Customer { get; set; }
+
+        //relazione M a M
+        public List<Products> ProductOrder { get; set; }
+
     }
 }

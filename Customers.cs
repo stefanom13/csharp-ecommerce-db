@@ -9,23 +9,29 @@ using System.Threading.Tasks;
 
 namespace csharp_ecommerce_db
 {
-    internal class Customers
+    [Table("Customers")]
+    [Index(nameof(Email), IsUnique = true)]
+    public class Customers
     {
-        [Table("Customers")]
-        [Index(nameof(Email), IsUnique = true)]
-        public class Customer
-        {
-            [Key]
-            public int CustomerId { get; set; }
+        
+        [Key]
+        [Column("Id")]
+        public int CustomerId { get; set; }
 
-            [Required]
-            public string Name { get; set; }
+        [Required]
+        [Column("Name")]
+        public string Name { get; set; }
 
-            [Required]
-            public string Surname { get; set; }
+        [Required]
+        [Column("Surname")]
 
-            [Column("customer_email")]
-            public string Email { get; set; }
-        }
+        public string Surname { get; set; }
+
+        [Column("customer_email")]
+        public string Email { get; set; }
+
+        //relazione 1 a M
+        public List<Orders> Order { get; set; }
+
     }
 }

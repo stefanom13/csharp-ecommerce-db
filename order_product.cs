@@ -9,7 +9,22 @@ using System.Threading.Tasks;
 
 namespace csharp_ecommerce_db
 {
-    internal class order_product
+    [Table("order_products")]
+    public class order_product
     {
+        [Key]
+        [Column("id")]
+        public int Id { get; set; }
+        [Required]
+        [Column("product_id")]
+        public int ProductId { get; set; }
+        public Products Product { get; set; }
+        [Required]
+        [Column("order_id")]
+        public int OrderId { get; set; }
+        public Orders Order { get; set; }
+        [Required]
+        [Column("quantity")]
+        public int Quantity { get; set; }
     }
 }
