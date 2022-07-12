@@ -29,6 +29,8 @@ namespace csharp_ecommerce_db
         public decimal Price { get; set; }
 
         public List<Orders> OrderProduct { get; set; }
+       
 
     }
+    
 }
