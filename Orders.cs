@@ -39,5 +39,20 @@ namespace csharp_ecommerce_db
         //relazione M a M
         public List<Products> ProductOrder { get; set; }
 
+        public Orders(int customerId, DateTime date, bool status)
+        {
+            CustomerId = customerId;
+            Date = date;
+            Status = status;
+        }
+        public void StampaInfo()
+        {
+            Console.WriteLine($"\nId: {OrderId}");
+            Console.WriteLine($"Customer id: {CustomerId}");
+            Console.WriteLine($"Date: {Date}");
+            Console.WriteLine($"Amount: {Amount}");
+            Console.WriteLine($"Status: {Status}");
+        }
+
     }
 }

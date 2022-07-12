@@ -33,20 +33,51 @@
 
 using csharp_ecommerce_db;
 
-
-
-using (EcommerceContext db = new EcommerceContext())
+internal class Program
 {
-    Products newProduct = new Products { Name = "Libro", Price = 12 };
-    Products newProduct1 = new Products { Name = "Cuscino", Price = 9 };
-    Products newProduct2 = new Products { Name = "Computer", Price = 345 };
+    static void Main(string[] args)
+    {
+        using (EcommerceContext db = new EcommerceContext())
+        {
+            Products newProduct = new Products { Name = "Libro", Price = 12 };
+            Products newProduct1 = new Products { Name = "Cuscino", Price = 9 };
+            Products newProduct2 = new Products { Name = "Computer", Price = 345 };
 
-    db.Add(newProduct);
-    db.Add(newProduct1);
-    db.Add(newProduct2);
-    db.SaveChanges();
+            db.Add(newProduct);
+            db.Add(newProduct1);
+            db.Add(newProduct2);
+            db.SaveChanges();
+
+            // Creazione Customer
+
+            Customers newCust = new Customers("Stefano", "Mancuso", "stfmncs@gmail.com");
+            Customers newCust1 = new Customers("Gianni", "Renda", "girenda@gmail.com");
+
+            db.Add(newCust);
+            db.Add(newCust1);
+            db.SaveChanges();
+
+            // *** Creazione ordini
+            Orders order1 = new Orders(5, DateTime.Now, true);
+            Orders order2 = new Orders(3, DateTime.Now, false);
+            Orders order3 = new Orders(3, DateTime.Now, true);
+            Orders order4 = new Orders(5, DateTime.Now, true);
+            Orders order5 = new Orders(5, DateTime.Now, false);
 
 
+            db.Add(order1);
+            db.Add(order2);
+            db.Add(order3);
+            db.Add(order4);
+            db.Add(order5);
+            db.SaveChanges();
+
+        }
+    }
+       
 }
+
+
+
 
 

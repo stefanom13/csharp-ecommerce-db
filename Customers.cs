@@ -33,5 +33,12 @@ namespace csharp_ecommerce_db
         //relazione 1 a M
         public List<Orders> Order { get; set; }
 
+        public Customers(string name, string surname, string email)
+        {
+            Name = name;
+            Surname = surname;
+            Email = email;
+        }
+
     }
 }
